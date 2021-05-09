@@ -1,4 +1,6 @@
 .title {
+  height: 50px;
+  line-height: 50px;
   color: #fff;
   background-color: #5967d8;
   padding: 10px 0 10px 10px;
