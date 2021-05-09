@@ -4,11 +4,11 @@ function App() {
   return (
     <div className="App">
       <div>Hello World</div>
-      <div className="title"></div>
+      <div className="title">Country State City</div>
       <div className="container">
-        <div className="country"></div>
-        <div className="states"></div>
-        <div className="cities"></div>
+        <div className="countries">Countries</div>
+        <div className="states">States</div>
+        <div className="cities">Cities</div>
       </div>
     </div>
   );
