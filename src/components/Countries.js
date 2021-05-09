@@ -22,6 +22,7 @@ function Countries() {
         placeholder="Search Countries..."
         onChange={(event) => setSearchTerm(event.target.value)}
         aria-label="country-search"
+        className="search"
       />
       <div className="countryList">
         {countriesJSON
@@ -39,14 +40,16 @@ function Countries() {
               <ul key={countries.id}>
                 <li>
                   {countries.name}
-                  <HiInformationCircle
-                    onClick={() => moreInfo()}
-                    className="more-info"
-                  />
-                  <HiArrowCircleRight
-                    onClick={() => showStates()}
-                    className="show-states"
-                  />
+                  <div className="icons">
+                    <HiInformationCircle
+                      onClick={() => moreInfo()}
+                      className="more-info"
+                    />
+                    <HiArrowCircleRight
+                      onClick={() => showStates()}
+                      className="show-states"
+                    />
+                  </div>
                 </li>
               </ul>
             );
