@@ -1,8 +1,19 @@
+import "./Countries.css";
 import countriesJSON from "../geoData/countries.json";
 import { useState } from "react";
+import { HiInformationCircle, HiArrowCircleRight } from "react-icons/hi";
 
 function Countries() {
   const [searchTerm, setSearchTerm] = useState("");
+
+  function moreInfo() {
+    console.log("more info");
+  }
+
+  function showStates() {
+    console.log("show states");
+  }
+
   return (
     <div className="countries">
       <div>Countries</div>
@@ -26,7 +37,17 @@ function Countries() {
           .map((countries) => {
             return (
               <ul key={countries.id}>
-                <li>{countries.name}</li>
+                <li>
+                  {countries.name}
+                  <HiInformationCircle
+                    onClick={() => moreInfo()}
+                    className="more-info"
+                  />
+                  <HiArrowCircleRight
+                    onClick={() => showStates()}
+                    className="show-states"
+                  />
+                </li>
               </ul>
             );
           })}

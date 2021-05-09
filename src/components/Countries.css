@@ -1,0 +1,33 @@
+ul {
+  padding-left: 0;
+  margin: 0;
+  border: 1px black solid;
+  border-bottom: 0;
+  width: 80%;
+}
+
+ul:last-child {
+  border-bottom: 1px;
+}
+
+li {
+  padding: 10px 0;
+  list-style: none;
+  font-size: 12px;
+}
+
+.more-info {
+  color: #3182ce;
+}
+
+.more-info:hover {
+  cursor: pointer;
+}
+
+.show-states {
+  color: #d5408c;
+}
+
+.show-states:hover {
+  cursor: pointer;
+}
