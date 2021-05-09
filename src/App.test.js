@@ -2,12 +2,6 @@ import { render } from "@testing-library/react";
 import App from "./App";
 
 describe("Basic app structure", () => {
-  test("renders 'Hello World' text", () => {
-    const { getByText } = render(<App />);
-    const element = getByText(/Hello World/);
-    expect(element).toBeInTheDocument();
-  });
-
   test("renders 'Country State City' text", () => {
     const { getByText } = render(<App />);
     const element = getByText(/Country State City/);
