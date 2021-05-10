@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import App from "./App";
-import Countries from "./components/Countries";
+import Container from "./components/Container";
 
 describe("Basic app structure", () => {
   it("should render 'Country State City' text", () => {
@@ -30,7 +30,7 @@ describe("Basic app structure", () => {
 
 describe("Countries structure", () => {
   beforeEach(() => {
-    render(<Countries />);
+    render(<Container />);
   });
 
   it("should render all 247 countries by default", async () => {
