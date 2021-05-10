@@ -11,13 +11,25 @@ country.get("/", async (req, res, next) => {
   }
 });
 
-country.get("/:name", async (req, res, next) => {
+country.get("/:country", async (req, res, next) => {
   try {
-    const countries = await ctrl.getSpecificCountry(req.params.name, next);
-    res.status(200).json(countries);
+    const country = await ctrl.getSpecificCountry(req.params.country, next);
+    res.status(200).json(country);
   } catch (error) {
     next(error);
   }
 });
+
+// country.get("/:country/:state", async (req, res, next) => {
+//   try {
+//     const countryStates = await ctrl.getSpecificCountry(
+//       req.params.country,
+//       next
+//     );
+//     res.status(200).json(countryStates);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 module.exports = country;

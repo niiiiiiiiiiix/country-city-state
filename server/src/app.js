@@ -6,7 +6,7 @@ app.get("/", (req, res, next) => {
 });
 
 const countryRouter = require("./routes/country.route");
-app.use("/country", countryRouter);
+app.use("/all", countryRouter);
 
 app.use((err, req, res, next) => {
   err.statusCode = err.statusCode || 500;

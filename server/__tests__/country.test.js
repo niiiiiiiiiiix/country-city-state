@@ -231,17 +231,17 @@ describe("Country State City", () => {
     });
   });
 
-  describe("GET /country", () => {
+  describe("GET /all", () => {
     it("should return all countries", async () => {
-      const { body } = await request(app).get("/country");
+      const { body } = await request(app).get("/all");
       expect(body.length).toBe(2);
     });
   });
 
-  describe("GET /country/:name", () => {
+  describe("GET /all/:country", () => {
     it("should return only the country selected (in this case, Singapore)", async () => {
-      const { body } = await request(app).get("/country/Singapore");
-      expect(body.name).toEqual("Singapore");
+      const { body } = await request(app).get("/all/199");
+      expect(body).toEqual("Singapore");
     });
   });
 });
