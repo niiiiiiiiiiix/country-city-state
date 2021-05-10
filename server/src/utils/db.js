@@ -7,7 +7,7 @@ const mongoOptions = {
   useCreateIndex: true, // for creating index with unique
 };
 
-const dbName = "wishlist-tracker";
+const dbName = "country-city-state";
 const dbUrl = process.env.MONGODB_URI || "mongodb://localhost:27017/" + dbName;
 mongoose.connect(dbUrl, mongoOptions);
 const db = mongoose.connection;
