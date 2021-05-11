@@ -1,5 +1,4 @@
 import "./Container.css";
-import "./Countries.css";
 import { useState, useEffect } from "react";
 import { HiInformationCircle, HiArrowCircleRight } from "react-icons/hi";
 import axios from "axios";
