@@ -3,7 +3,7 @@
 ## How to get backend running
 
 1. Create a through the url `mongodb://localhost:27017/ + dbName`, where dbName is `country-state-city` and collection is `all`
-2. In the collection, insert JSON file `countries+states+cities.json`
+2. In the collection, insert JSON file `countries+states+cities.json`, which can be found in `_geoData` directory
 
 ## How to set up and run the code
 
