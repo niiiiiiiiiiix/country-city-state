@@ -10,6 +10,7 @@ function Container() {
   const [searchState, setSearchState] = useState("");
   const [searchCity, setSearchCity] = useState("");
   const [state, setState] = useState([]);
+  const [city, setCity] = useState([]);
 
   function moreInfo() {
     console.log("more info");
@@ -30,9 +31,10 @@ function Container() {
     const countryData = country.find((element) => element.name === value);
     const stateData = countryData.states;
     setState(stateData);
+    setCity([]);
   }
 
-  function ShowState({ stateData }) {
+  function ShowStates({ stateData }) {
     return (
       <div className="countryList">
         {stateData
@@ -55,7 +57,48 @@ function Container() {
                       onClick={() => moreInfo()}
                       className="more-info"
                     />
-                    <HiArrowCircleRight className="show-states" />
+                    <HiArrowCircleRight
+                      onClick={() => getStateCities(states.name)}
+                      className="show-states"
+                    />
+                  </div>
+                </li>
+              </ul>
+            );
+          })}
+      </div>
+    );
+  }
+
+  function getStateCities(value) {
+    const stateData = state.find((element) => element.name === value);
+    const cityData = stateData.cities;
+    setCity(cityData);
+  }
+
+  function ShowCities({ cityData }) {
+    return (
+      <div className="countryList">
+        {cityData
+          .filter((cities) => {
+            if (searchCity === "") {
+              return cities;
+            } else if (
+              cities.name.toLowerCase().includes(searchCity.toLowerCase())
+            ) {
+              return cities;
+            }
+          })
+          .map((cities) => {
+            return (
+              <ul key={cities.id}>
+                <li>
+                  {cities.name}
+                  <div className="icons">
+                    <HiInformationCircle
+                      onClick={() => moreInfo()}
+                      className="more-info"
+                    />
                   </div>
                 </li>
               </ul>
@@ -119,7 +162,7 @@ function Container() {
           aria-label="state-search"
           className="search"
         />
-        <ShowState stateData={state} />
+        <ShowStates stateData={state} />
       </div>
       <div className="cities">
         <div>Cities</div>
@@ -130,6 +173,7 @@ function Container() {
           aria-label="city-search"
           className="search"
         />
+        <ShowCities cityData={city} />
       </div>
     </div>
   );
