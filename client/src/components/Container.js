@@ -1,20 +1,68 @@
 import "./Container.css";
 import "./Countries.css";
-import countries from "../geoData/countries.json";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HiInformationCircle, HiArrowCircleRight } from "react-icons/hi";
+import axios from "axios";
 
 function Container() {
+  const [country, setCountry] = useState([]);
   const [searchCountry, setSearchCountry] = useState("");
   const [searchState, setSearchState] = useState("");
   const [searchCity, setSearchCity] = useState("");
+  const [state, setState] = useState([]);
 
   function moreInfo() {
     console.log("more info");
   }
 
-  function showState() {
-    console.log("show state");
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/all")
+      .then((response) => {
+        setCountry(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  function getCountryStates(value) {
+    const countryData = country.find((element) => element.name === value);
+    const stateData = countryData.states;
+    setState(stateData);
+  }
+
+  function ShowState({ stateData }) {
+    return (
+      <div className="countryList">
+        {stateData
+          .filter((states) => {
+            if (searchState === "") {
+              return states;
+            } else if (
+              states.name.toLowerCase().includes(searchState.toLowerCase())
+            ) {
+              return states;
+            }
+          })
+          .map((states) => {
+            return (
+              <ul key={states.id}>
+                <li>
+                  {states.name}
+                  <div className="icons">
+                    <HiInformationCircle
+                      onClick={() => moreInfo()}
+                      className="more-info"
+                    />
+                    <HiArrowCircleRight className="show-states" />
+                  </div>
+                </li>
+              </ul>
+            );
+          })}
+      </div>
+    );
   }
 
   return (
@@ -29,7 +77,7 @@ function Container() {
           className="search"
         />
         <div className="countryList">
-          {countries
+          {country
             .filter((countries) => {
               if (searchCountry === "") {
                 return countries;
@@ -52,7 +100,7 @@ function Container() {
                         className="more-info"
                       />
                       <HiArrowCircleRight
-                        onClick={() => showState()}
+                        onClick={() => getCountryStates(countries.name)}
                         className="show-states"
                       />
                     </div>
@@ -71,6 +119,7 @@ function Container() {
           aria-label="state-search"
           className="search"
         />
+        <ShowState stateData={state} />
       </div>
       <div className="cities">
         <div>Cities</div>

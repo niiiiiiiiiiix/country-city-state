@@ -1,7 +1,7 @@
 const request = require("supertest");
 const app = require("../src/app");
 const dbHandlers = require("../src/utils/dbHandler");
-const Country = require("../src/models/country.model");
+const All = require("../src/models/all.model");
 
 describe("Country State City", () => {
   const CountryData = [
@@ -219,7 +219,7 @@ describe("Country State City", () => {
     await dbHandlers.connect();
   });
   beforeEach(async () => {
-    await Country.create(CountryData);
+    await All.create(CountryData);
   });
   afterEach(async () => await dbHandlers.clearDatabase());
   afterAll(async () => await dbHandlers.closeDatabase());
@@ -235,13 +235,6 @@ describe("Country State City", () => {
     it("should return all countries", async () => {
       const { body } = await request(app).get("/all");
       expect(body.length).toBe(2);
-    });
-  });
-
-  describe("GET /all/:country", () => {
-    it("should return only the country selected (in this case, Singapore)", async () => {
-      const { body } = await request(app).get("/all/199");
-      expect(body).toEqual("Singapore");
     });
   });
 });

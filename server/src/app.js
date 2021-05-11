@@ -5,8 +5,14 @@ app.get("/", (req, res, next) => {
   res.send("Welcome!");
 });
 
-const countryRouter = require("./routes/country.route");
-app.use("/all", countryRouter);
+let corsOptions = {
+  origin: process.env.FRONTEND_URL || "http://localhost:3000",
+};
+const cors = require("cors");
+app.use(cors(corsOptions));
+
+const allRouter = require("./routes/all.route");
+app.use("/all", allRouter);
 
 app.use((err, req, res, next) => {
   err.statusCode = err.statusCode || 500;

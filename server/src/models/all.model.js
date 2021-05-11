@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const countrySchema = new Schema(
+const allSchema = new Schema(
   {
     id: Number,
     name: String,
@@ -23,8 +23,8 @@ const countrySchema = new Schema(
     emojiU: String,
     states: Array,
   },
-  { collection: "data" }
+  { collection: "all" }
 );
 
-const countryModel = mongoose.model("Country", countrySchema);
-module.exports = countryModel;
+const allModel = mongoose.model("All", allSchema);
+module.exports = allModel;
