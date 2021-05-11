@@ -236,5 +236,15 @@ describe("Country State City", () => {
       const { body } = await request(app).get("/all");
       expect(body.length).toBe(2);
     });
+
+    it("should return five states for Singapore", async () => {
+      const { body } = await request(app).get("/all");
+      expect(body[0].states.length).toBe(5);
+    });
+
+    it("should return one city for Singapore's Central state", async () => {
+      const { body } = await request(app).get("/all");
+      expect(body[0].states[0].cities.length).toBe(1);
+    });
   });
 });

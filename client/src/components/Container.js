@@ -1,15 +1,16 @@
 import "./Container.css";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { HiInformationCircle, HiArrowCircleRight } from "react-icons/hi";
 import axios from "axios";
 
 function Container() {
   const [country, setCountry] = useState([]);
+  const [state, setState] = useState([]);
+  const [city, setCity] = useState([]);
+
   const [searchCountry, setSearchCountry] = useState("");
   const [searchState, setSearchState] = useState("");
   const [searchCity, setSearchCity] = useState("");
-  const [state, setState] = useState([]);
-  const [city, setCity] = useState([]);
 
   function moreInfo() {
     console.log("more info");
