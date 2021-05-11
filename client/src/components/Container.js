@@ -34,39 +34,50 @@ function Container() {
   }
 
   function ShowStates({ stateData }) {
-    return (
-      <div className="countryList">
-        {stateData
-          .filter((states) => {
-            if (searchState === "") {
-              return states;
-            } else if (
-              states.name.toLowerCase().includes(searchState.toLowerCase())
-            ) {
-              return states;
-            }
-          })
-          .map((states) => {
-            return (
-              <ul key={states.id}>
-                <li>
-                  {states.name}
-                  <div className="icons">
-                    <HiInformationCircle
-                      onClick={() => moreInfo()}
-                      className="more-info"
-                    />
-                    <HiArrowCircleRight
-                      onClick={() => getStateCities(states.name)}
-                      className="show-states"
-                    />
-                  </div>
-                </li>
-              </ul>
-            );
-          })}
-      </div>
-    );
+    if (stateData.length !== 0) {
+      return (
+        <div className="countryList">
+          {stateData
+            .filter((states) => {
+              if (searchState === "") {
+                return states;
+              } else if (
+                states.name.toLowerCase().includes(searchState.toLowerCase())
+              ) {
+                return states;
+              }
+            })
+            .map((states) => {
+              return (
+                <ul key={states.id}>
+                  <li>
+                    <div className="flag-name-iso2">
+                      <div className="state-name">{states.name}</div>
+                      <div className="state-code">{states.state_code}</div>
+                    </div>
+                    <div className="icons">
+                      <div className="more-info">
+                        <HiInformationCircle onClick={() => moreInfo()} />
+                        <div class="more-info-text">More Details</div>
+                      </div>
+                      <div className="show-next">
+                        <HiArrowCircleRight
+                          onClick={() => getStateCities(states.name)}
+                        />
+                        <div class="show-next-text">Show Cities</div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              );
+            })}
+        </div>
+      );
+    } else {
+      return (
+        <div className="empty">Please select a country with states...</div>
+      );
+    }
   }
 
   function getStateCities(value) {
@@ -76,35 +87,39 @@ function Container() {
   }
 
   function ShowCities({ cityData }) {
-    return (
-      <div className="countryList">
-        {cityData
-          .filter((cities) => {
-            if (searchCity === "") {
-              return cities;
-            } else if (
-              cities.name.toLowerCase().includes(searchCity.toLowerCase())
-            ) {
-              return cities;
-            }
-          })
-          .map((cities) => {
-            return (
-              <ul key={cities.id}>
-                <li>
-                  {cities.name}
-                  <div className="icons">
-                    <HiInformationCircle
-                      onClick={() => moreInfo()}
-                      className="more-info"
-                    />
-                  </div>
-                </li>
-              </ul>
-            );
-          })}
-      </div>
-    );
+    if (cityData.length !== 0) {
+      return (
+        <div className="countryList">
+          {cityData
+            .filter((cities) => {
+              if (searchCity === "") {
+                return cities;
+              } else if (
+                cities.name.toLowerCase().includes(searchCity.toLowerCase())
+              ) {
+                return cities;
+              }
+            })
+            .map((cities) => {
+              return (
+                <ul key={cities.id}>
+                  <li>
+                    {cities.name}
+                    <div className="icons">
+                      <div className="more-info">
+                        <HiInformationCircle onClick={() => moreInfo()} />
+                        <div class="more-info-text">More Details</div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              );
+            })}
+        </div>
+      );
+    } else {
+      return <div className="empty">Please select a state with cities...</div>;
+    }
   }
 
   return (
@@ -135,16 +150,22 @@ function Container() {
               return (
                 <ul key={countries.id}>
                   <li>
-                    {countries.name}
+                    <div className="flag-name-iso2">
+                      <div className="emoji">{countries.emoji}</div>
+                      <div className="country-name">{countries.name}</div>
+                      <div className="iso2">{countries.iso2}</div>
+                    </div>
                     <div className="icons">
-                      <HiInformationCircle
-                        onClick={() => moreInfo()}
-                        className="more-info"
-                      />
-                      <HiArrowCircleRight
-                        onClick={() => getCountryStates(countries.name)}
-                        className="show-states"
-                      />
+                      <div className="more-info">
+                        <HiInformationCircle onClick={() => moreInfo()} />
+                        <div class="more-info-text">More Details</div>
+                      </div>
+                      <div className="show-next">
+                        <HiArrowCircleRight
+                          onClick={() => getCountryStates(countries.name)}
+                        />
+                        <div class="show-next-text">Show States</div>
+                      </div>
                     </div>
                   </li>
                 </ul>

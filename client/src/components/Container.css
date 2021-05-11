@@ -7,6 +7,12 @@
   font-weight: bold;
 }
 
+.empty {
+  font-weight: normal;
+  font-style: italic;
+  font-size: 14px;
+}
+
 .search {
   margin: 20px 0 20px 0;
 }
@@ -21,9 +27,56 @@ ul {
 li {
   padding: 10px 15px;
   list-style: none;
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: normal;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+li:hover {
+  background-color: #fafafa;
+}
+
+.flag-name-iso2 {
+  display: flex;
+}
+
+.emoji {
+  padding-right: 4px;
+  margin-right: 10px;
+  font-size: 12px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.iso2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  margin-left: 10px;
+  background-color: #eef2f6;
+  border-radius: 35%;
+  height: 18px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #4b5463;
+}
+
+.state-code {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  margin-left: 10px;
+  background-color: #eef2f6;
+  border-radius: 35%;
+  height: 18px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #4b5463;
 }
 
 .icons {
@@ -33,18 +86,54 @@ li {
 
 .more-info {
   color: #3182ce;
-  font-size: 16px;
-}
-
-.more-info:hover {
+  font-size: 20px;
+  position: relative;
   cursor: pointer;
+  display: flex;
 }
 
-.show-states {
+.more-info .more-info-text {
+  visibility: hidden;
+  width: 80px;
+  font-size: 10px;
+  font-weight: bold;
+  background-color: #5b69d2;
+  color: #fff;
+  bottom: 120%;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+}
+
+.more-info:hover .more-info-text {
+  visibility: visible;
+  z-index: 1;
+}
+
+.show-next {
   color: #d5408c;
-  font-size: 16px;
+  font-size: 20px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
 }
 
-.show-states:hover {
-  cursor: pointer;
+.show-next .show-next-text {
+  visibility: hidden;
+  width: 80px;
+  font-size: 10px;
+  font-weight: bold;
+  background-color: #5b69d2;
+  color: #fff;
+  bottom: 120%;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+}
+
+.show-next:hover .show-next-text {
+  visibility: visible;
+  z-index: 1;
 }
